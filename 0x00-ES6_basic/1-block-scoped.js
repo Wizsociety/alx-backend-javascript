@@ -1,10 +1,10 @@
 export default function taskBlock(trueOrFalse) {
-  let task = false;
-  let task2 = true;
+  const task = false;  // Use 'const' instead of 'let'
+  const task2 = true;  // Use 'const' instead of 'let'
 
   if (trueOrFalse) {
-    let task = true;
-    let task2 = false;
+    const task = true;  // Declare variables with 'const' within block scope
+    const task2 = false;
   }
 
   return [task, task2];
