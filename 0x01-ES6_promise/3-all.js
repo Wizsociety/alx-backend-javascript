@@ -1,9 +1,16 @@
-import { uploadPhoto, createUser } from './utils';
+import { createUser, uploadPhoto } from './utils';
 
 export default function handleProfileSignup() {
-  return Promise.all([uploadPhoto(), createUser()])
-    .then(([photo, user]) => {
-      console.log(`${photo.body} ${user.firstName} ${user.lastName}`);
+  // Call the uploadPhoto function to upload the user's photo then chain all
+  // promises together and handle with one error statement
+  return Promise
+    .all([uploadPhoto(), createUser()])
+    .then((userResp) => {
+      // If the user was successfully created, log the body, firstName, and lastName to the console
+      console.log(`${userResp[0].body} ${userResp[1].firstName} ${userResp[1].lastName}`);
     })
-    .catch(() => console.log('Signup system offline'));
+    .catch(() => {
+      // In the event of an error, log Signup system offline to the console
+      console.log('Signup system offline');
+    });
 }

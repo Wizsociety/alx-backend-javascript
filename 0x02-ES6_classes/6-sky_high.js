@@ -1,16 +1,27 @@
-import Building from './5-building.js';
+/* eslint-disable no-underscore-dangle */
+import Building from './5-building';
 
 export default class SkyHighBuilding extends Building {
-	  constructor(sqft, floors) {
-		      super(sqft);
-		      this._floors = floors;
-		    }
+  /**
+   * @param {number} sqft - square foot of building
+   * @param {number} floors - number of floors in building
+   *
+   * Implement getters and setters
+   */
+  constructor(sqft, floors) {
+    super(sqft);
+    this.floors = floors;
+  }
 
-	  get floors() {
-		      return this._floors;
-		    }
+  get floors() {
+    return this._floors;
+  }
 
-	  evacuationWarningMessage() {
-		      return `Evacuate slowly the ${this._floors} floors`;
-		    }
+  set floors(value) {
+    this._floors = value;
+  }
+
+  evacuationWarningMessage() {
+    return `Evacuate slowly the ${this.floors} floors`;
+  }
 }
